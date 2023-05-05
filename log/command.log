@@ -1,0 +1,23 @@
+ * Serving Flask app "command" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
+nts/distributeur-app/src/scripts/command.py", line 88, in <module>
+    app.run(host='0.0.0.0', port=9000, debug=False, threaded=True, use_reloader=False)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 990, in run
+    run_simple(host, port, self, **options)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 1052, in run_simple
+    inner()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 996, in inner
+    srv = make_server(
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 847, in make_server
+    return ThreadedWSGIServer(
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 740, in __init__
+    HTTPServer.__init__(self, server_address, handler)
+  File "/usr/lib/python3.9/socketserver.py", line 453, in __init__
+    self.server_activate()
+  File "/usr/lib/python3.9/socketserver.py", line 475, in server_activate
+    self.socket.listen(self.request_queue_size)
+OSError: [Errno 98] Address already in use
