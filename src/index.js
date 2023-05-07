@@ -9,18 +9,45 @@ import GoutsList from './components/GoutsList';
 import IntesityLevel from './components/IntesityLevel';
 import Succes from './components/Succes';
 import WaterProgressBar from './components/WaterProgressBar/WaterProgressBar';
+import Auth from './components/Auth';
+import Dashboard from './components/Dashboard';
+import Devices from './components/Devices';
+import Weather from './components/Weather';
+import Cards from './components/Cards';
+import CardAdministration from './components/CardAdministration';
+import Main from './components/Main';
+import PassCardPage from './components/PassCardPage';
+
+import reducers from './reducers';
+import { Provider } from 'react-redux';
+import {createStore, applyMiddleware} from "redux"
+import thunk from "redux-thunk"
+
+
+const store = createStore(reducers,applyMiddleware(thunk))
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <div style={{cursor:'none'}}>
+  <Provider store={store}>
+    <div>
     <BrowserRouter>
     <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/App' element={<App/>}/>
+        <Route path='/passCard' element={<PassCardPage/>}/>
         <Route path='/gouts' element={<GoutsList/>}/>
+        <Route path='/App' element={<App/>}/>
+        <Route path="/auth" element={<Auth/>}/>
         <Route path='/IntesityLevels' element={<IntesityLevel/>}/>
         <Route path='/SuccesDeguster' element={<Succes/>}/>
         <Route path='/loader' element={<WaterProgressBar/>}/>
+        <Route path='/dashboard' element={<Dashboard/>} >
+          <Route index element={<Main/>}/>
+          <Route path='devices' element={<Devices/>}/>
+          <Route path='weather' element={<Weather/>}/>
+          <Route path='cards' element={<Cards/>}/>
+          <Route path='admin' element={<CardAdministration/>}/>
+        </Route>
       
     </Routes>
 
@@ -29,7 +56,7 @@ root.render(
    
     </div>
     
-  </React.StrictMode>
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
