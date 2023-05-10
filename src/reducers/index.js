@@ -5,13 +5,15 @@ import errorReducer from "./error";
 import newCardDataReducer from "./newCardData";
 import cardsReducer from "./cards";
 import adminCardDataReducer from "./adminReadData";
+import currentCard from "./currentCard";
 const reducers = combineReducers({
     authReducer,
     devicesReducer,
     errorReducer,
     newCardDataReducer,
     cardsReducer,
-    adminCardDataReducer
+    adminCardDataReducer,
+    currentCard
 })
 
 

@@ -2,6 +2,7 @@ const authReducer = (state = null, action) => {
     switch(action.type){
         case "VERIFY_LOGIN":
             const user =JSON.parse(localStorage.getItem("PROFILE"))
+            console.log(user)
             return user?user:state
             case "LOGIN_REDUCER":
                 localStorage.setItem("PROFILE",JSON.stringify(action.payload))

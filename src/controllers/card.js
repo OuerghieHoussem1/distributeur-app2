@@ -51,3 +51,20 @@ export const deleteCards = (cardId) => async (dispatch) => {
         dispatch({type:"SHOW_ERROR",payload:error.response.data})
     }
 }
+
+export const cardAccepted = (card) => async (dispatch) => {
+    try {
+        dispatch({type:"CARD_ACCEPTED",payload:card})
+    } catch (error) {
+        dispatch({type:"SHOW_ERROR",payload:"CARD_ACCEPTED error"})
+    }
+} 
+
+
+export const lessBeverages = (card) => async (dispatch) => {
+    try {
+        dispatch({type:"LESS_BEVERAGES"})
+    } catch (error) {
+        dispatch({type:"SHOW_ERROR",payload:"CARD_ACCEPTED error"})
+    }
+}
