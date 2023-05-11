@@ -69,7 +69,7 @@ export default function PassCardPage() {
 
   return (    
     <div>
-      <div className="px-24 h-screen w-screen justify-around items-center bg-[url('/src/background.png')] flex flex-row">
+      <div className="px-16 h-screen w-screen justify-around items-center bg-[url('/src/background.png')] flex flex-row">
           {
             isRight==0?<>
             <h1 className=" text-white text-5xl font-bold font-sans ">SCANNER VOTRE<br/> CARTE</h1>
