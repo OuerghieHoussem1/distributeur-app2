@@ -25,7 +25,7 @@ export default function GoutsList() {
 
   return (
     <div>
-      <div className="App-header GoutsList">
+      <div className="ml-8 App-header GoutsList">
         <img alt="bg" src={bgImage} style={{ width: "100%" ,height:"780px",marginTop:"0px"}} />
         <div className="bgTransparent">
           {" "}
