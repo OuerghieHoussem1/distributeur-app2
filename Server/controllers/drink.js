@@ -4,7 +4,6 @@ import drinkModel from "../models/drink.js"
 export const getDrinks = async (req, res) => {
     const drinks = await drinkModel.find()
 
-    console.log(drinks)
 
     res.status(200).json(drinks)
 }
@@ -28,7 +27,6 @@ export const editDrink = async (req,res) => {
 export const oneDrink = async (req,res) => {
     const drink = await drinkModel.find({drinkId:req.body._id})
     if(!drink) return res.status(403).json({message:"drink not found",buttonText:"Retry"})
-    console.log(req.body)
 
 
     const newdrink = await drinkModel.findByIdAndUpdate(req.body._id,{...req.body,drinkQuantity:req.body.drinkQuantity-1},{new:true})
@@ -39,7 +37,6 @@ export const oneDrink = async (req,res) => {
 export const emptyDrink = async (req, res) => {
     const drink = await drinkModel.find({drinkId:req.body._id})
     if(!drink) return res.status(403).json({message:"drink not found",buttonText:"Retry"})
-    console.log(req.body)
 
 
     const newdrink = await drinkModel.findByIdAndUpdate(req.body._id,{...req.body,drinkQuantity:0},{new:true})
