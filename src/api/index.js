@@ -33,4 +33,12 @@ export const startWipeCardDataMode = (userId) => axios.post(`${BASE_URL}devices/
 export const getCards = (userId) => axios.get(`${BASE_URL}cards/${userId}`)
 export const saveNewCard = (userId, newCardData) => axios.post(`${BASE_URL}cards/${userId}`,newCardData)
 export const editCard = (newCard) => axios.put(`${BASE_URL}cards/`,newCard)
+export const oneDrink = (newCard) => axios.put(`${BASE_URL}cards/drink`,newCard)
 export const deleteCard = (cardId) => axios.delete(`${BASE_URL}cards/${cardId}`)
+
+//DRINKS
+export const getDrinks = () => axios.get(`${BASE_URL}drinks`)
+export const createDrink = (userId, newDrinkData) => axios.post(`${BASE_URL}drinks/${userId}`,newDrinkData)
+export const editDrink = (newDrink) => axios.put(`${BASE_URL}drinks/`,newDrink)
+export const oneDrinkDrink = (newDrink) => axios.put(`${BASE_URL}drinks/drink`,newDrink)
+export const deleteDrink = (drinkId) => axios.delete(`${BASE_URL}drinks/${drinkId}`)

@@ -10,6 +10,7 @@ import path from "path"
 import authRouter from "./routes/auth.js"
 import cardsRouter from "./routes/cards.js"
 import devicesRouter from "./routes/devices.js"
+import drinksRouter from "./routes/drink.js"
 
 import deviceModel from './models/device.js'
 
@@ -185,6 +186,7 @@ io.on("connection",(socket)=>{
 app.use("/auth",authRouter)
 app.use("/cards",cardsRouter)
 app.use("/devices",devicesRouter)
+app.use("/drinks",drinksRouter)
 
 app.set("connectedDevices",sockets)
 

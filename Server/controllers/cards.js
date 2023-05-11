@@ -29,6 +29,16 @@ export const editCard = async (req,res) => {
     return res.status(200).json(newCard)
 }
 
+export const oneDrink = async (req,res) => {
+    const card = await cardModel.find({cardId:req.body._id})
+    if(!card) return res.status(403).json({message:"Card not found",buttonText:"Retry"})
+
+
+    const newCard = await cardModel.findByIdAndUpdate(req.body._id,{...req.body,beverages:req.body.beverages-1, paymentDate:new Date()},{new:true})
+
+    return res.status(200).json(newCard)
+}
+
 
 export const deleteCard = async (req,res) => {
     const card = await cardModel.find({cardId:req.params.cardId})

@@ -6,6 +6,8 @@ import newCardDataReducer from "./newCardData";
 import cardsReducer from "./cards";
 import adminCardDataReducer from "./adminReadData";
 import currentCard from "./currentCard";
+import drinksReducer from "./drinks";
+import currentDrink from "./currentDrink";
 const reducers = combineReducers({
     authReducer,
     devicesReducer,
@@ -13,7 +15,9 @@ const reducers = combineReducers({
     newCardDataReducer,
     cardsReducer,
     adminCardDataReducer,
-    currentCard
+    currentCard,
+    drinksReducer,
+    currentDrink
 })
 
 

@@ -51,7 +51,7 @@ export default function PassCardPage() {
         setIsRight(1)
         setTimeout(()=>{
           navigate("/gouts")
-        },5000)
+        },3000)
       })
 
       socket.on("WRONG_CARD",(card)=>{
@@ -100,13 +100,13 @@ export default function PassCardPage() {
               <AiOutlineArrowRight size={250} color='white' className='w-full'/>
             </div>
           </>:isRight==1?<>
-            <h1 className=" text-white text-8xl font-bold font-sans ">Salut<br/>{card?.cardName}</h1>
+            <h1 className=" text-white text-8xl font-bold font-sans high uppercase ">BONJOUR,<br/>{card?.cardName}</h1>
             <div className='flex flex-col gap-4 mt-60'>
               <img src={cardImage} alt='' className=' rounded-2xl aspect-video w-96 border-[3px] animate-bounce '/>
               <AiOutlineArrowRight size={250} color='white' className='w-full'/>
             </div>
           </>:<>
-            <h1 className=" text-white text-8xl font-bold font-sans ">Sorry<br/>Accés erroné ❌<br/>Veuillez vous référé a l'accueil</h1>
+            <h1 className=" text-white text-8xl font-bold font-sans ">Sorry<br/>Accés erroné ❌<br/>Veuillez vous référer a l'accueil</h1>
             <div className='flex flex-col gap-4 mt-60'>
               <img src={cardImage} alt='' className=' rounded-2xl aspect-video w-96 border-[3px] animate-bounce '/>
               <AiOutlineArrowRight size={250} color='white' className='w-full'/>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Gout from "./Gout";
 import "./GoutsList.css";
 import bgImage from "../background.png";
@@ -8,7 +8,21 @@ import Cassis from "../1.png";
 import FruitDelapassion from "../123.png";
 import FiguedeBarbarie from "../1234.png";
 import CitronVert from "../12345.png";
+import { useDispatch, useSelector } from "react-redux";
+import { loadDrinks } from "../controllers/drink";
 export default function GoutsList() {
+
+  const drinks = useSelector(state => state.drinksReducer)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(loadDrinks())
+  }, []);
+
+  useEffect(()=>{
+    console.log(drinks)
+  },[drinks]) 
+
   return (
     <div>
       <div className="App-header GoutsList">
@@ -18,19 +32,34 @@ export default function GoutsList() {
           <h1 className="Heading">QUEL GOÛT VOULEZ-VOUS BOIRE AUJOURD'HUI ? </h1>
         </div>
 
-        <Gout className="goutHover Cassis" saveur={1} img={Cassis} />
-        <Gout className="goutHover Pasteque" saveur={3} img={pasteque} />
-        <Gout
-          className="goutHover PecheetFruitdelaPassion"
-          saveur={5}
-          img={FruitDelapassion}
-        />
-        <Gout
-          className="goutHover FiguedeBarbarie"
-          saveur={4}
-          img={FiguedeBarbarie}
-        />
-        <Gout className="goutHover CitronVert" saveur={2} img={CitronVert} />
+        {drinks.map((drink, index) => {
+          const classname = `goutHover ${drink.className} ${drink.drinkQuantity <= 0?"grayscale-[1]":"grayscale-[0]"}`
+          let image
+          switch (drink.saveur) {
+            case 1:
+              image = Cassis
+              break;
+            case 2:
+              image = CitronVert
+              break;
+              case 3:
+              image = pasteque
+              break;
+              case 4:
+              image = FiguedeBarbarie
+              
+              break;
+              case 5:
+              image = FruitDelapassion
+              
+              break;
+              
+              default:
+              image = Cassis
+              break;
+          }
+          return <Gout key={index} className={classname} saveur={drink.saveur} img={image} drink={drink}/>
+        })}
       </div>
     </div>
   );

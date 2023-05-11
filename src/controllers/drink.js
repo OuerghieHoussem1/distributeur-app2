@@ -1,4 +1,5 @@
-import { deleteCard, editCard, getCards, oneDrink, saveNewCard } from "../api"
+import { deleteDrink, editDrink, getDrinks, oneDrinkDrink, createDrink } from "../api"
+
 
 export const setNewCardData = (uuid,deviceId) => async (dispatch) => {
     try {
@@ -8,6 +9,7 @@ export const setNewCardData = (uuid,deviceId) => async (dispatch) => {
     }
 }
 
+
 export const setNewAdminCardData = (deviceId,readData,uuid,cardType) => async (dispatch) => {
     try {
         dispatch({type:"ADMIN_INSERTED",payload:{deviceId,readData,uuid,cardType}})
@@ -16,56 +18,61 @@ export const setNewAdminCardData = (deviceId,readData,uuid,cardType) => async (d
     }
 }
 
-export const loadCards = (userId) => async (dispatch) => {
+
+export const loadDrinks = () => async (dispatch) => {
     try {
-        const {data} = await getCards(userId)
-        dispatch({type:"LOAD_CARDS",payload:data})
+        const {data} = await getDrinks()
+        dispatch({type:"LOAD_DRINKS",payload:data})
     } catch (error) {
         dispatch({type:"SHOW_ERROR",payload:error.response.data})
     }
 }
 
+
 export const addNewCard = (userId, newCardData) => async (dispatch) => {
     try {
-       const {data} = await saveNewCard(userId,newCardData)
+       const {data} = await createDrink(userId,newCardData)
        dispatch({type:"ADD_CARD",payload:data}) 
     } catch (error) {
         dispatch({type:"SHOW_ERROR",payload:error.response.data})
     }
 }
 
-export const editCards = (newCard) => async (dispatch) => {
+
+export const editCards = (newDrink) => async (dispatch) => {
     try {
-        const {data} = await editCard(newCard)
+        const {data} = await editDrink(newDrink)
         dispatch({type:"UPDATE_CARD",payload:data})
     } catch (error) {
         dispatch({type:"SHOW_ERROR",payload:error.response.data})
     }
 }
 
+
 export const deleteCards = (cardId) => async (dispatch) => {
     try {
-        const {data} = await deleteCard(cardId)
+        const {data} = await deleteDrink(cardId)
         dispatch({type:"DELETE_CARD",payload:data})
     } catch (error) {
         dispatch({type:"SHOW_ERROR",payload:error.response.data})
     }
 }
 
-export const cardAccepted = (card) => async (dispatch) => {
-    try {
-        dispatch({type:"CARD_ACCEPTED",payload:card})
-    } catch (error) {
-        dispatch({type:"SHOW_ERROR",payload:"CARD_ACCEPTED error"})
-    }
-} 
 
-
-export const lessBeverages = (card) => async (dispatch) => {
+export const drinkChosen = (drink) => async (dispatch) => {
     try {
-        const {data} = await oneDrink(card)
-        dispatch({type:"LESS_BEVERAGES"})
+        dispatch({type:"DRINK_CHOSEN",payload:drink})
     } catch (error) {
         dispatch({type:"SHOW_ERROR",payload:"CARD_ACCEPTED error"})
     }
 }
+
+export const lessDrinks = (drink) => async (dispatch) => {
+    try {
+        const {data} = await oneDrinkDrink(drink)
+        dispatch({type:"DRINK_DRANK"})
+    } catch (error) {
+        dispatch({type:"SHOW_ERROR",payload:"CARD_ACCEPTED error"})
+    }
+}
+
