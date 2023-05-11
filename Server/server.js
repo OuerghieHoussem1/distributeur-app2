@@ -55,6 +55,8 @@ io.on("connection",(socket)=>{
             const user = await userModel.findById(device.owner)
             if(!user) return console.log("This device has no owner")
 
+            console.log(users["ARENA_GYM"])
+
             users["ARENA_GYM"].emit("GET_NEW_CARD_DATA",{uuid,deviceId})
         })
 
