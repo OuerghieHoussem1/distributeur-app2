@@ -24,7 +24,7 @@ export default function Dashboard() {
       socket = io('http://localhost:5000');
       socket.on("connect",()=>{
         console.log("Connected")
-        socket.emit("NEW_USER_CONNECTED","ARENA_GYM")
+        socket.emit("NEW_USER_CONNECTED","ARENA_GYM_ADMIN")
       })
 
 

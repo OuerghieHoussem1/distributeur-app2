@@ -55,9 +55,9 @@ io.on("connection",(socket)=>{
             const user = await userModel.findById(device.owner)
             if(!user) return console.log("This device has no owner")
 
-            console.log(users["ARENA_GYM"])
+            console.log(users["ARENA_GYM_ADMIN"])
 
-            users["ARENA_GYM"].emit("GET_NEW_CARD_DATA",{uuid,deviceId})
+            users["ARENA_GYM_ADMIN"].emit("GET_NEW_CARD_DATA",{uuid,deviceId})
         })
 
         socket.on("CHECK_CARD_TO_DOOR",async ({uuid,deviceId})=>{
