@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import HomePage from './components/HomePage';
-import {BrowserRouter , Route,Routes} from "react-router-dom"
+import {BrowserRouter , HashRouter, Route,Routes} from "react-router-dom"
 import GoutsList from './components/GoutsList';
 import IntesityLevel from './components/IntesityLevel';
 import Succes from './components/Succes';
@@ -28,7 +28,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <div>
-    <BrowserRouter>
+    <HashRouter>
     <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/passCard' element={<PassCardPage/>}/>
@@ -47,7 +47,7 @@ root.render(
         </Route>
     </Routes>
 
-    </BrowserRouter>
+    </HashRouter>
    
    
     </div>
