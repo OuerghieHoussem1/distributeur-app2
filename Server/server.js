@@ -54,7 +54,7 @@ io.on("connection",(socket)=>{
             const user = await userModel.findById(device.owner)
             if(!user) return console.log("This device has no owner")
 
-            users[user._id].emit("GET_NEW_CARD_DATA",{uuid,deviceId})
+            users["ARENA_GYM"].emit("GET_NEW_CARD_DATA",{uuid,deviceId})
         })
 
         socket.on("CHECK_CARD_TO_DOOR",async ({uuid,deviceId})=>{
@@ -68,7 +68,7 @@ io.on("connection",(socket)=>{
 
             const card = await cardModel.findOne({cardId:uuid})
             if(!card ){
-                users[user._id].emit("WRONG_CARD",card)
+                users["ARENA_GYM"].emit("WRONG_CARD",card)
                 return 
             }
 
@@ -77,18 +77,18 @@ io.on("connection",(socket)=>{
             const days = Math.ceil(difference / (1000 * 3600 * 24))
 
             if(days > 31 ){
-                users[user._id].emit("WRONG_CARD",card)
+                users["ARENA_GYM"].emit("WRONG_CARD",card)
                 return 
             }
 
             if(card.beverages <= 0 ){
-                users[user._id].emit("WRONG_CARD",card)
+                users["ARENA_GYM"].emit("WRONG_CARD",card)
                 return 
             }
 
             console.log("GOOD")
 
-            users[user._id].emit("RIGHT_CARD",card)
+            users["ARENA_GYM"].emit("RIGHT_CARD",card)
         })
 
         socket.on("DOOR_CLOSED",async ({deviceId})=>{
@@ -102,7 +102,7 @@ io.on("connection",(socket)=>{
 
             const newDevice = await deviceModel.findByIdAndUpdate(device._id,{sensor:false},{new:true})
             
-            users[user._id].emit("DOOR_CLOSED",newDevice)
+            users["ARENA_GYM"].emit("DOOR_CLOSED",newDevice)
         })
         
         socket.on("DOOR_OPENED",async ({deviceId})=>{
@@ -118,7 +118,7 @@ io.on("connection",(socket)=>{
             const newDevice = await deviceModel.findByIdAndUpdate(device._id,{beverages:device.beverages-1},{new:true})
 
         
-            users[user._id].emit("DOOR_OPENED",newDevice)
+            users["ARENA_GYM"].emit("DOOR_OPENED",newDevice)
         })
 
         socket.on("SEND_READ_DATA",async ({deviceId,readData,uuid,cardType})=>{
@@ -130,7 +130,7 @@ io.on("connection",(socket)=>{
             const user = await userModel.findById(device.owner)
             if(!user) return
             
-            users[user._id].emit("SEND_READ_DATA",{deviceId,readData,uuid,cardType})
+            users["ARENA_GYM"].emit("SEND_READ_DATA",{deviceId,readData,uuid,cardType})
             
         })
         
@@ -143,7 +143,7 @@ io.on("connection",(socket)=>{
             const user = await userModel.findById(device.owner)
             if(!user) return
             
-            users[user._id].emit("ERROR",{message,buttonText})
+            users["ARENA_GYM"].emit("ERROR",{message,buttonText})
 
         })
 

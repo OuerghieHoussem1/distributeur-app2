@@ -34,11 +34,11 @@ export default function PassCardPage() {
 
     /* if(!connectedUser ) navigate("/auth") */
     console.log(card)
-    if(connectedUser && !socket?.connected) {
+    if(!socket?.connected) {
       socket = io('http://localhost:5000');
       socket.on("connect",()=>{
         console.log("Connected")
-        socket.emit("NEW_USER_CONNECTED",connectedUser._id)
+        socket.emit("NEW_USER_CONNECTED","ARENA_GYM")
       })
 
       socket.on("RIGHT_CARD",(card)=>{
