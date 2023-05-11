@@ -18,11 +18,7 @@ function goToGout(){
 
   return (
     <div className='App-header' style={{margin : 0,padding:0}}>
-      
-      <img src = {gifHomepage} alt = "homePage" style={style} onClick={goToGout}/>
-    
-     
-      
+      <img src = {gifHomepage} alt = "homePage" style={style} onClick={goToGout}/>  
     </div>
   )
 }

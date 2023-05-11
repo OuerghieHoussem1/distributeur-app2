@@ -41,11 +41,6 @@ export default function PassCardPage() {
         socket.emit("NEW_USER_CONNECTED",connectedUser._id)
       })
 
-
-      socket.on("GET_NEW_CARD_DATA",(newCardData)=>{
-        dispatch(setNewCardData(newCardData.uuid,newCardData.deviceId))
-      })
-
       socket.on("RIGHT_CARD",(card)=>{
         dispatch(cardAccepted(card))
         setIsRight(1)
@@ -63,23 +58,6 @@ export default function PassCardPage() {
         },5000)
         console.log("WRONG CARD", card)
       })
-
-
-      socket.on("DOOR_CLOSED",(userId)=>{
-        dispatch(updateDevice(userId))
-      })
-      
-
-      socket.on("DOOR_OPENED",(userId)=>{
-        dispatch(updateDevice(userId))
-      })
-
-
-      socket.on("SEND_READ_DATA",({deviceId,readData,uuid,cardType})=>{
-        console.log(deviceId,readData,uuid,cardType)
-        dispatch(setNewAdminCardData(deviceId,readData,uuid,cardType))
-      })
-
 
       socket.on("ERROR",error=>{
         console.log(error)

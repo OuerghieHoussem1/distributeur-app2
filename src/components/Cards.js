@@ -66,6 +66,8 @@ export default function Cards() {
                 <td className='font-bold'></td>
                 <td className='font-bold'>Card id</td>
                 <td className='font-bold'>Card name</td>
+                <td className='font-bold'>Drinks left</td>
+                <td className='font-bold'>Last payment</td>
                 <td className='font-bold'></td>
                 <td className='font-bold'></td>
               </tr>
@@ -113,6 +115,8 @@ const Card = ({card}) => {
       <td></td>
       <td>{card?.cardId}</td>
       <td>{card?.cardName}</td>
+      <td>{card?.beverages}</td>
+      <td>{new Date(card?.paymentDate).getDate()}-{new Date(card?.paymentDate).getMonth()}-{new Date(card?.paymentDate).getFullYear()}</td>
       <td><button onClick={()=>dispatch(editCards({...card,isValid:!card?.isValid}))}  style={{color:card.isValid?"green":"red"}} className='background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'>Edit</button></td>
       <td><ConfirmDelete card={card}/></td>
     </tr>

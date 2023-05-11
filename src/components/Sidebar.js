@@ -22,7 +22,7 @@ export default function Sidebar() {
             <div className="overflow-y-auto py-4 px-3  rounded dark:bg-gray-800 h-full flex flex-col">
                 <div className='flex flex-row gap-2  items-center mb-11'>
                     <TbSmartHome size={40} color="white" className='p-2 bg-sky-900 rounded-full'/>
-                    <p className='text-xl'>Smart home</p>
+                    <p className='text-xl'>SPORT WATER</p>
                 </div>
                 <ul className="space-y-2">
                     <li>
@@ -31,20 +31,18 @@ export default function Sidebar() {
                         <span className="ml-3">Dashboard</span>
                         </NavLink>
                     </li>
-                    <li>
+                    {/* <li>
                         <NavLink to="/Dashboard/devices" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                         <BiDevices size={30} color="gray" />
                         <span className="flex-1 ml-3 whitespace-nowrap">Devices</span>
-                        {/* <span className="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span> */}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/Dashboard/weather" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                         <TiWeatherSunny size={30} color="gray" />
                         <span className="flex-1 ml-3 whitespace-nowrap">Weather</span>
-                        {/* <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span> */}
                         </NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <NavLink to="/Dashboard/cards" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                         <AiOutlineCreditCard size={30} color="gray" />
@@ -52,14 +50,14 @@ export default function Sidebar() {
                         </NavLink>
                     </li>
                 </ul>
-                <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
+                {/* <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
                     <li>
                         <NavLink to="/Dashboard/admin" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
                         <GrUserAdmin size={30} color="gray"/>
                         <span className="ml-4">Admin</span>
                         </NavLink>
                     </li>
-                </ul>
+                </ul> */}
                 <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700 flex-grow items-end flex w-full">
                     <li className='w-full'>
                         <button onClick={startlogout} to="/Dashboard/Products" className="w-full flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">

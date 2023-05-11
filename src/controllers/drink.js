@@ -1,4 +1,4 @@
-import { deleteDrink, editDrink, getDrinks, oneDrinkDrink, createDrink } from "../api"
+import { deleteDrink, editDrink, getDrinks, oneDrinkDrink, createDrink, emptyDrink } from "../api"
 
 
 export const setNewCardData = (uuid,deviceId) => async (dispatch) => {
@@ -39,10 +39,10 @@ export const addNewCard = (userId, newCardData) => async (dispatch) => {
 }
 
 
-export const editCards = (newDrink) => async (dispatch) => {
+export const editDrinkController = (newDrink) => async (dispatch) => {
     try {
         const {data} = await editDrink(newDrink)
-        dispatch({type:"UPDATE_CARD",payload:data})
+        dispatch({type:"UPDATE_DRINK",payload:data})
     } catch (error) {
         dispatch({type:"SHOW_ERROR",payload:error.response.data})
     }
@@ -71,6 +71,15 @@ export const lessDrinks = (drink) => async (dispatch) => {
     try {
         const {data} = await oneDrinkDrink(drink)
         dispatch({type:"DRINK_DRANK"})
+    } catch (error) {
+        dispatch({type:"SHOW_ERROR",payload:"CARD_ACCEPTED error"})
+    }
+}
+
+export const emptyDrinkController = (drink) => async (dispatch) => {
+    try {
+        const {data} = await emptyDrink(drink)
+        dispatch({type:"UPDATE_DRINK",payload:data})
     } catch (error) {
         dispatch({type:"SHOW_ERROR",payload:"CARD_ACCEPTED error"})
     }

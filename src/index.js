@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HomePage from './components/HomePage';
 import {BrowserRouter , Route,Routes} from "react-router-dom"
@@ -11,8 +10,6 @@ import Succes from './components/Succes';
 import WaterProgressBar from './components/WaterProgressBar/WaterProgressBar';
 import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
-import Devices from './components/Devices';
-import Weather from './components/Weather';
 import Cards from './components/Cards';
 import CardAdministration from './components/CardAdministration';
 import Main from './components/Main';
@@ -36,19 +33,18 @@ root.render(
         <Route path='/' element={<HomePage/>}/>
         <Route path='/passCard' element={<PassCardPage/>}/>
         <Route path='/gouts' element={<GoutsList/>}/>
-        <Route path='/App' element={<App/>}/>
+        {/* <Route path='/App' element={<App/>}/> */}
         <Route path="/auth" element={<Auth/>}/>
         <Route path='/IntesityLevels' element={<IntesityLevel/>}/>
         <Route path='/SuccesDeguster' element={<Succes/>}/>
         <Route path='/loader' element={<WaterProgressBar/>}/>
         <Route path='/dashboard' element={<Dashboard/>} >
           <Route index element={<Main/>}/>
-          <Route path='devices' element={<Devices/>}/>
-          <Route path='weather' element={<Weather/>}/>
+          {/* <Route path='devices' element={<Devices/>}/> */}
+          {/* <Route path='weather' element={<Weather/>}/> */}
           <Route path='cards' element={<Cards/>}/>
-          <Route path='admin' element={<CardAdministration/>}/>
+{/*           <Route path='admin' element={<CardAdministration/>}/> */}
         </Route>
-      
     </Routes>
 
     </BrowserRouter>

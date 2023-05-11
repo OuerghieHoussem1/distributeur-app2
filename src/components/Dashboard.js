@@ -4,7 +4,6 @@ import Sidebar from './Sidebar';
 import io from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNewAdminCardData, setNewCardData } from '../controllers/card';
-import { updateDevice } from '../controllers/device';
 import { showError } from '../controllers/error';
 
 
@@ -36,17 +35,6 @@ export default function Dashboard() {
       socket.on("RIGHT_CARD",()=>{
         navigate("/gouts")
       })
-
-
-      socket.on("DOOR_CLOSED",(userId)=>{
-        dispatch(updateDevice(userId))
-      })
-      
-
-      socket.on("DOOR_OPENED",(userId)=>{
-        dispatch(updateDevice(userId))
-      })
-
 
       socket.on("SEND_READ_DATA",({deviceId,readData,uuid,cardType})=>{
         console.log(deviceId,readData,uuid,cardType)

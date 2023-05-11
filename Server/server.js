@@ -26,7 +26,7 @@ app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use(morgan("dev"))
 const __dirname = path.resolve()
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/build'));
 
 app.get("/",(req,res)=>{
     res.render("index.html")
@@ -189,6 +189,8 @@ app.use("/devices",devicesRouter)
 app.use("/drinks",drinksRouter)
 
 app.set("connectedDevices",sockets)
+
+
 
 
 const PORT = 5000
