@@ -17,6 +17,7 @@ import deviceModel from './models/device.js'
 import morgan from 'morgan'
 import userModel from './models/user.js'
 import cardModel from './models/card.js'
+import { checkCard } from './controllers/cards.js'
 
 const app = express()
 const server = http.createServer(app)
@@ -176,6 +177,8 @@ io.on("connection",(socket)=>{
         })
     })
 
+    console.log("SOMETHING_CONNECTED")
+
     socket.emit("ASK_FOR_CODE",{})
 })
 
@@ -187,6 +190,34 @@ app.use("/auth",authRouter)
 app.use("/cards",cardsRouter)
 app.use("/devices",devicesRouter)
 app.use("/drinks",drinksRouter)
+
+
+app.post("/checkCard",async (req, res)=>{
+    const card = await cardModel.findOne({cardId:req.body.cardId})
+    if(!card ){
+        users["ARENA_GYM"].emit("WRONG_CARD",card)
+        return  res.json({})
+    }
+
+    const difference = new Date().getTime() - card.paymentDate.getTime() 
+
+    const days = Math.ceil(difference / (1000 * 3600 * 24))
+
+    if(days > 31 ){
+        users["ARENA_GYM"].emit("WRONG_CARD",card)
+        return  res.json({})
+    }
+
+    if(card.beverages <= 0 ){
+        users["ARENA_GYM"].emit("WRONG_CARD",card)
+        return res.json({})
+    }
+
+    console.log("GOOD")
+
+    users["ARENA_GYM"].emit("RIGHT_CARD",card)
+    res.json({})
+})
 
 app.set("connectedDevices",sockets)
 

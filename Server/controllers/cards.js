@@ -20,6 +20,11 @@ export const saveNewCard = async (req,res) => {
     return res.status(200).json(newCard)
 }
 
+
+export const checkCard = async (req, res) => {
+    
+}
+
 export const editCard = async (req,res) => {
     const card = await cardModel.find({cardId:req.body._id})
     if(!card) return res.status(403).json({message:"Card not found",buttonText:"Retry"})
