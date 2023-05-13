@@ -18,10 +18,10 @@ export default function IntesityLevel() {
   const [isLoading, setIsLoading] = useState(false);
 
   //Concentration Config
-  const DURATION_EAU_CONST = 4600;
+  const DURATION_EAU_CONST = 14000;
   const durationLevel1 = 200;
-  const durationLevel2 = 250;
-  const durationLevel3 = 300;
+  const durationLevel2 = 300;
+  const durationLevel3 = 400;
 
 
   function hundlSelect(selectedImage) {
