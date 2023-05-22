@@ -25,8 +25,8 @@ export default function GoutsList() {
 
   return (
     <div>
-      <div className="ml-8 App-header GoutsList">
-        <img alt="bg" src={bgImage} style={{ width: "100%" ,height:"100vh",marginTop:"0px"}} />
+      <div className="ml-8 App-header GoutsList" style={{backgroundColor:"#01081a"}}>
+        <img alt="bg" src={bgImage} style={{ width: "100%" ,height:"780px",marginTop:"0px", backgroundColor:"black"}} />
         <div className="bgTransparent">
           {" "}
           <h1 className="Heading">QUEL GOÛT VOULEZ-VOUS BOIRE AUJOURD'HUI ? </h1>
