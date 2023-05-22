@@ -33,7 +33,7 @@ const schema = mongoose.Schema({
 
 schema.pre("save",async function (next){
     this.password = await bcrypt.hash(this.password, 12)
-    this.confirmationToken = crypto.randomUUID()
+    this.confirmationToken = "aaaaaa"
     next()
 })
 

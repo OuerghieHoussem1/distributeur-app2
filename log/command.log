@@ -16,3 +16,6 @@ pigpio.pi() function? E.g. pigpio.pi('soft', 8888)
    Use a production WSGI server instead.
  * Debug mode: off
  * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
+127.0.0.1 - - [22/May/2023 16:39:57] "[37mGET /command/1/400/14000 HTTP/1.1[0m" 200 -
+127.0.0.1 - - [22/May/2023 16:41:07] "[37mGET /command/1/400/14000 HTTP/1.1[0m" 200 -
+127.0.0.1 - - [22/May/2023 16:45:02] "[37mGET /command/2/300/14000 HTTP/1.1[0m" 200 -

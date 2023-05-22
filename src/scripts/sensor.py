@@ -1,14 +1,21 @@
-import rdm6300
+import time, serial
 import requests
-reader = rdm6300.Reader('/dev/ttyS0')
-print("Please insert an RFID card")
+print('zzzz')
+sl = serial.Serial("/dev/serial0", 9600)
+print("aaa")
 while True:
-    card = reader.read()
-    if card:
-        data = card.value
-        print(data)
+    ID = ""
+    read_byte = sl.read()
+    if read_byte == b'\x02':
+        for i in range(12):
+            read_byte = sl.read()
+            ID = ID + str(read_byte)
+        ID = ID.replace("b","")
+        ID = ID.replace("'","")
+        ID = ID[:-2]
+        print(ID)
         val = requests.post(
         "http://localhost:5000/checkCard", 
         data=None,
-        json={'cardId':data}
+        json={'cardId':ID}
         )
