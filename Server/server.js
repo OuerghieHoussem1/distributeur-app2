@@ -196,6 +196,8 @@ app.use("/drinks",drinksRouter)
 
 app.post("/checkCard",async (req, res)=>{
     const card = await cardModel.findOne({cardId:req.body.cardId})
+    console.log("aa")
+    console.log(users)
     if(!card ){
         users["ARENA_GYM"].emit("WRONG_CARD",card)
         return  res.json({})

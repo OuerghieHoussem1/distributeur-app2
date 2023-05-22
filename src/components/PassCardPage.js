@@ -35,7 +35,7 @@ export default function PassCardPage() {
     /* if(!connectedUser ) navigate("/auth") */
     console.log(card)
     if(!socket?.connected) {
-      socket = io('http://192.168.1.229:5000');
+      socket = io('http://192.168.12.1:5000');
       socket.on("connect",()=>{
         console.log("Connected")
         socket.emit("NEW_USER_CONNECTED","ARENA_GYM")
