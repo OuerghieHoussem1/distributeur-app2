@@ -117,7 +117,7 @@ const Card = ({card}) => {
       <td>{card?.cardName}</td>
       <td>{card?.beverages}</td>
       <td>{new Date(card?.paymentDate).getDate()}-{new Date(card?.paymentDate).getMonth()}-{new Date(card?.paymentDate).getFullYear()}</td>
-      <td><button onClick={()=>dispatch(editCards({...card,isValid:!card?.isValid}))}  style={{color:card.isValid?"green":"red"}} className='background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'>Edit</button></td>
+      <td><button onClick={()=>dispatch(editCards({...card,isValid:!card?.isValid}))}  style={{color:card.isValid?"green":"red"}} className='background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'>Reset</button></td>
       <td><ConfirmDelete card={card}/></td>
     </tr>
   )
