@@ -39,7 +39,7 @@ export const oneDrink = async (req,res) => {
     if(!card) return res.status(403).json({message:"Card not found",buttonText:"Retry"})
 
 
-    const newCard = await cardModel.findByIdAndUpdate(req.body._id,{...req.body,beverages:req.body.beverages-1, paymentDate:new Date()},{new:true})
+    const newCard = await cardModel.findByIdAndUpdate(req.body._id,{...req.body,beverages:req.body.beverages-1},{new:true})
 
     return res.status(200).json(newCard)
 }

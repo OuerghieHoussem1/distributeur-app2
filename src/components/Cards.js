@@ -5,6 +5,7 @@ import {RiCloseFill} from "react-icons/ri"
 import { useDispatch, useSelector } from 'react-redux';
 import { startBackToNormal, startNewCard } from '../controllers/device';
 import { addNewCard, deleteCards, loadCards,editCards } from '../controllers/card';
+import DataTable from 'react-data-table-component';
 export default function Cards() {
   const [inserted, setInserted] = useState(false);
   const [isSelecting, setIsSelecting] = useState(false);
@@ -43,6 +44,63 @@ export default function Cards() {
     dispatch(addNewCard(connectedUser?._id,newCard))
   }
 
+
+  const [searchText, setSearchText] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
+
+ 
+
+  const columns = [
+    { name: 'card id', selector: '_id', sortable: true },
+    { name: 'card name', selector: 'cardName', sortable: true },
+    { name: 'drinks left', selector: 'beverages', sortable: true },
+    { name: 'Last payment', selector: 'paymentDate', sortable: true },
+    {
+      name: 'Edit',
+      cell: (row) => (
+        <div>
+          <button onClick={()=>dispatch(editCards({...row,isValid:!row?.isValid}))}  style={{color:row.isValid?"green":"red"}} className='background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'>Reset</button>
+        </div>
+      ),
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
+    {
+      name: 'Delete',
+      cell: (row) => (
+        <div>
+          <ConfirmDelete card={row}/>
+        </div>
+      ),
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
+  ];
+
+   // Handle search text change
+   const handleSearch = (event) => {
+    setSearchText(event.target.value);
+  };
+
+  // Filter data based on search text
+  const filteredData = cards.filter((row) =>
+    Object.values(row).some(
+      (value) =>
+        value && value.toString().toLowerCase().includes(searchText.toLowerCase())
+    )
+  );
+
+  // Define pagination options
+  const paginationOptions = {
+    rowsPerPageText: 'Rows per page:',
+    rangeSeparatorText: 'of',
+    selectAllRowsItem: true,
+    selectAllRowsItemText: 'All',
+  };
+
   return (
     <div className='px-7 py-4'>
       <div className='flex flex-row items-center mb-9'>
@@ -61,7 +119,27 @@ export default function Cards() {
           <div className='w-full flex flex-col'>
             {!isSelecting&&<button onClick={()=>setIsSelecting(true)} className='self-end mb-6 bg-sky-900 text-white px-5 py-2 rounded-full text-xl hover:scale-105 duration-150 hover:bg-sky-700'>Add new card</button>}
           </div>
-           <table className='w-full'>
+          <div>
+            <input
+              type="text"
+              value={searchText}
+              onChange={handleSearch}
+              placeholder="Search..."
+            />
+            <DataTable
+              columns={columns}
+              data={filteredData}
+              pagination
+              paginationServer
+              paginationTotalRows={filteredData.length}
+              paginationPerPage={5}
+              paginationRowsPerPageOptions={[5, 10, 15, 20]}
+              paginationComponentOptions={paginationOptions}
+              onChangePage={(page) => setCurrentPage(page)}
+              currentPage={currentPage}
+            />
+          </div>
+           {/* <table className='w-full'>
               <tr>
                 <td className='font-bold'></td>
                 <td className='font-bold'>Card id</td>
@@ -72,7 +150,7 @@ export default function Cards() {
                 <td className='font-bold'></td>
               </tr>
               {cards.map((card)=><Card card={card}/>)}
-           </table>
+           </table> */}
         </div>
         <div className='grow h-full' style={{transition:"max-width 1s ease-in-out , max-height 1s ease-in-out", overflow:"hidden", maxWidth:!isSelecting?0:500, maxHeight:!isSelecting?0:800}}>
           <p className='text-xl font-bold' style={{transition:"opacity 1s ease-in-out",opacity:!isSelecting?0:1}}>Please insert your card</p>
