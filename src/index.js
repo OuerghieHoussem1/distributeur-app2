@@ -31,7 +31,7 @@ root.render(
     <HashRouter>
     <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/passCard' element={<PassCardPage/>}/>
+        {/* <Route path='/passCard' element={<PassCardPage/>}/> */}
         <Route path='/gouts' element={<GoutsList/>}/>
         {/* <Route path='/App' element={<App/>}/> */}
         <Route path="/auth" element={<Auth/>}/>
