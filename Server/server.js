@@ -229,7 +229,7 @@ app.set("connectedDevices",sockets)
 
 
 const PORT = 5000
-const CONNECTION_URL = "mongodb://127.0.0.1:27017/smart-home"
+const CONNECTION_URL = "mongodb+srv://houssemouerghie:testtest@cluster0.cmk7sds.mongodb.net/app"
 mongoose.connect(CONNECTION_URL).then(()=>{
     console.log("Connected to database")
     server.listen(PORT,()=>{
