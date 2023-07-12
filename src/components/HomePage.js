@@ -13,7 +13,7 @@ const style = {
 }
 const Navigate = useNavigate()
 function goToGout(){
-  Navigate("/gouts")
+  Navigate("/passCard")
 }
 
   return (
