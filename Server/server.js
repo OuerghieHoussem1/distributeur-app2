@@ -195,7 +195,8 @@ app.use("/drinks",drinksRouter)
 
 
 app.post("/checkCard",async (req, res)=>{
-    const card = await cardModel.findOne({cardId:req.body.cardId})
+    try{
+        const card = await cardModel.findOne({cardId:req.body.cardId})
     console.log("aa")
     console.log(users)
     if(!card ){
@@ -221,6 +222,10 @@ app.post("/checkCard",async (req, res)=>{
 
     users["ARENA_GYM"].emit("RIGHT_CARD",card)
     res.json({})
+    }catch{
+        console.log("WRONG PAGE")
+    }
+    
 })
 
 app.set("connectedDevices",sockets)
