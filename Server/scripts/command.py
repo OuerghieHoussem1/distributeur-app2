@@ -32,6 +32,12 @@ GPIO.setup(PIN_SAVEUR_5, GPIO.OUT)
 GPIO.setup(PIN_EAU, GPIO.OUT)
 
 
+GPIO.output(PIN_SAVEUR_1, GPIO.HIGH)
+GPIO.output(PIN_SAVEUR_2, GPIO.HIGH)
+GPIO.output(PIN_SAVEUR_3, GPIO.HIGH)
+GPIO.output(PIN_SAVEUR_4, GPIO.HIGH)
+GPIO.output(PIN_SAVEUR_5, GPIO.HIGH)
+
 ############################################################################################
 # Server Flask
 ############################################################################################

@@ -225,7 +225,6 @@ app.post("/checkCard",async (req, res)=>{
     }catch{
         console.log("WRONG PAGE")
     }
-    
 })
 
 app.set("connectedDevices",sockets)
