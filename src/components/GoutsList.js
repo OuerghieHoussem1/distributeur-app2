@@ -47,13 +47,10 @@ export default function GoutsList() {
               break;
               case 4:
               image = FiguedeBarbarie
-              
               break;
               case 5:
               image = FruitDelapassion
-              
               break;
-              
               default:
               image = Cassis
               break;

@@ -88,7 +88,7 @@ export default function IntesityLevel() {
 
   return (
     <div className="GoutsList">
-      <img alt="bg" src={bgImage} style={{ width: "100%" ,height:"780px"}} />
+      <img alt="bg" src={bgImage} style={{ width: "100%" ,height:"100vh"}} />
       <div className="bgTransparent">
         {" "}
         <h1 className="Heading">QUEL INTENSITÉ VOULEZ-VOUS ?</h1>

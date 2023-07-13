@@ -1,13 +1,17 @@
 .Cassis{
     position: absolute;
     left: 5%;
-    top:25%
+    top:25%;
+    width:50%;
+    height:10%
 }
 .goutHover:hover{transform: scale(1.2);}
 .PecheetFruitdelaPassion{
     position: absolute;
     left: 5%;
-    top:50%
+    top:50%;
+    width:50%;
+    height:10%
 }
 .FiguedeBarbarie{
     position: absolute;
@@ -19,12 +23,14 @@
 .Pasteque{
     position: absolute;
     left: 27%;
-    top:75%
+    top:75%;
+    width:50%;
+    height:10%;
 }
 .CitronVert{
-    height:10%;
     position: absolute;
     left: 49%;
     top:25%;
-    width:50%
+    width:50%;
+    height:10%
 }

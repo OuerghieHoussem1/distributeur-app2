@@ -3,7 +3,7 @@ import userModel from "../models/user.js"
 
 
 export const getCards = async (req, res) => {
-    const cards = await cardModel.find({owner:req.params.userId})
+    const cards = await cardModel.find({})
 
     res.status(200).json(cards)
 }

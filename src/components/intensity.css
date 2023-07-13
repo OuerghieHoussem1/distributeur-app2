@@ -2,7 +2,8 @@
 .bins{
     position: absolute;
     top: 30%;
-    left: 0%;
+    left: 50%;
+    transform: translateX(-50%);
      width: max-content;
      display: flex;
      flex-wrap: wrap;

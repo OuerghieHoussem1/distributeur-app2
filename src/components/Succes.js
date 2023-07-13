@@ -28,10 +28,10 @@ export default function Succes() {
     if (seconds === 100) {
       clearInterval(interval);
       setTimeout(() => {
-      /* console.log(card)
+      console.log(card)
       dispatch(lessBeverages(card))
       console.log(drink)
-      dispatch(lessDrinks(drink)) */
+      dispatch(lessDrinks(drink))
         Navigate("/")
       }, 4000);
     }
@@ -50,7 +50,7 @@ export default function Succes() {
     <div> 
       <div className="flex flex-col justify-center items-center gap-7 mt-24">
             <p className="uppercase font-bold text-4xl text-[#eedc19]"> Merci d'avoir Choisi Sport Water !</p>
-            {/* <p className="mt-6 uppercase font-bold text-4xl text-[#eedc19]">Il vous reste {card.beverages} boissons !</p> */}
+            <p className="mt-6 uppercase font-bold text-4xl text-[#eedc19]">Il vous reste {card.beverages} boissons !</p>
             <p className="mt-6 font-bold text-4xl text-[#eedc19]"> XOXO.</p>
       </div>
             { /* <p className="mint" style={{marginLeft:"130px"}}> </p>*/}
