@@ -46,7 +46,7 @@ class Device():
                             val = requests.post(
                             "http://localhost:5000/checkCard", 
                             data=None,
-                            json={'cardId':ID}
+                            json={'cardId':tag}
                             )
                             container = []
                         else:
