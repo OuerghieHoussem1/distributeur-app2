@@ -1,5 +1,6 @@
 import evdev
 from evdev import categorize, ecodes
+import requests
 
 
 class Device():
@@ -42,6 +43,11 @@ class Device():
                             # create and dump the tag
                             tag = "".join(i.strip('KEY_') for i in container)
                             print(tag)
+                            val = requests.post(
+                            "http://localhost:5000/checkCard", 
+                            data=None,
+                            json={'cardId':ID}
+                            )
                             container = []
                         else:
                             container.append(digit)
