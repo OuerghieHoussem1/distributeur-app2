@@ -1,31 +1,34 @@
-import RPi.GPIO as GPIO
-import time
-import datetime
-""" from luma.core.interface.serial import spi, noop """
-""" 
-from luma.led_matrix.device import max7219
+from rfid_sl500 import SL500_RFID_Reader
+from time import sleep
 
-from luma.core.render import canvas
-from luma.core.virtual import viewport
-from luma.core.legacy import text, show_message, textsize
-from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_FONT, LCD_FONT """
+reader = SL500_RFID_Reader('/dev/ttyUSB0',19200)
 
-""" serial = spi(port=0, device=0, gpio=noop()) """
-""" device = max7219(serial, cascaded=4, block_orientation=-90) """
-id = 1
-print ("Pass your card please")
 
-with open('/dev/tty0', 'r') as tty:
-	while True:
-		#cek apakah power ON
-		rfid = tty.readline()
-		time.sleep(0.5)
-		if rfid:
-			rfid = str(rfid)[:10]
-			msg = rfid
-			print (msg)
+def main():
+	try:
+		#reader = SL500_RFID_Reader('COM5', 19200)
+		reader = SL500_RFID_Reader('/dev/ttyUSB0',19200)
+	except:
+		print('No RFID Reader')
+		return	
 
-		time.sleep(0.5)
+	#print reader
+	# reader.DEBUG_MODE = True
+	# reader.MUTE_MODE = True
+	reader.set_key('\xFF\xFF\xFF\xFF\xFF\xFF')
 
-		
-""" device.clear()	 """
+
+	try:
+		card_data = reader.read_block(0)
+	except:
+		print('No RFID Card')
+		return	
+
+	print(card_data)
+	reader.close()
+
+
+if __name__ == '__main__':
+	while(1):
+		main()
+		sleep(3)
