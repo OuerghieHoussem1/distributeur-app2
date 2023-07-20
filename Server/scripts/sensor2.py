@@ -1,34 +1,54 @@
-from rfid_sl500 import SL500_RFID_Reader
-from time import sleep
-
-reader = SL500_RFID_Reader('/dev/ttyUSB0',19200)
+import evdev
+from evdev import categorize, ecodes
 
 
-def main():
-	try:
-		#reader = SL500_RFID_Reader('COM5', 19200)
-		reader = SL500_RFID_Reader('/dev/ttyUSB0',19200)
-	except:
-		print('No RFID Reader')
-		return	
+class Device():
+    name = 'Sycreader RFID Technology Co., Ltd SYC ID&IC USB Reader'
 
-	#print reader
-	# reader.DEBUG_MODE = True
-	# reader.MUTE_MODE = True
-	reader.set_key('\xFF\xFF\xFF\xFF\xFF\xFF')
+    @classmethod
+    def list(cls, show_all=False):
+        # list the available devices
+        devices = [evdev.InputDevice(fn) for fn in evdev.list_devices()]
+        if show_all:
+            for device in devices:
+                print("event: " + device.fn, "name: " + device.name, "hardware: " + device.phys)
+        return devices
 
+    @classmethod
+    def connect(cls):
+        # connect to device if available
+        try:
+            device = [dev for dev in cls.list() if cls.name in dev.name][0]
+            device = evdev.InputDevice(device.fn)
+            return device
+        except IndexError:
+            print("Device not found.\n - Check if it is properly connected. \n - Check permission of /dev/input/ (see README.md)")
+            exit()
 
-	try:
-		card_data = reader.read_block(0)
-	except:
-		print('No RFID Card')
-		return	
+    @classmethod
+    def run(cls):
+        device = cls.connect()
+        container = []
+        try:
+            device.grab()
+            # bind the device to the script
+            print("RFID scanner is ready....")
+            print("Press Control + c to quit.")
+            for event in device.read_loop():
+                    # enter into an endeless read-loop
+                    if event.type == ecodes.EV_KEY and event.value == 1:
+                        digit = evdev.ecodes.KEY[event.code]
+                        if digit == 'KEY_ENTER':
+                            # create and dump the tag
+                            tag = "".join(i.strip('KEY_') for i in container)
+                            print(tag)
+                            container = []
+                        else:
+                            container.append(digit)
 
-	print(card_data)
-	reader.close()
+        except:
+            # catch all exceptions to be able release the device
+            device.ungrab()
+            print('Quitting.')
 
-
-if __name__ == '__main__':
-	while(1):
-		main()
-		sleep(3)
+Device.run()
