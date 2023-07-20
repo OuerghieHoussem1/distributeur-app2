@@ -124,7 +124,7 @@ export const startNewCardMode = async (req, res) => {
 
     if (devices.length==0) return res.status(404).json({message:"No device connected", buttonText:"Continue"})
     const connectedDevices = req.app.get("connectedDevices")
-    console.log(connectedDevices.length)
+    console.log(connectedDevices)
     devices.forEach((device)=>{
         if(!connectedDevices[device.deviceId]) return
         setNewCardMode(connectedDevices[device.deviceId])
@@ -141,7 +141,7 @@ export const startBackToNormal = async (req, res) => {
     if (devices.length==0) return res.status(404).json({message:"No device connected", buttonText:"Continue"})
     const connectedDevices = req.app.get("connectedDevices")
 
-    console.log(connectedDevices.length)
+    console.log(connectedDevices)
     devices.forEach((device)=>{
         if(!connectedDevices[device.deviceId]) return
         backToNormalMode(connectedDevices[device.deviceId])
