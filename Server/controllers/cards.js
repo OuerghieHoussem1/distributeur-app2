@@ -46,10 +46,14 @@ export const oneDrink = async (req,res) => {
 
 
 export const deleteCard = async (req,res) => {
-    const card = await cardModel.find({cardId:req.params.cardId})
+    const card = await cardModel.findOne({cardId:req.params.cardId})
     if(!card) return res.status(403).json({message:"Card not found",buttonText:"Retry"})
+
+    console.log(card)
     
-    const deleted = await cardModel.findByIdAndDelete(req.params.cardId)
+    const deleted = await cardModel.findByIdAndDelete(card._id)
+
+    console.log(deleted)
     
     return res.status(200).json(deleted)
 }
