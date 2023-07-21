@@ -21,7 +21,7 @@ export default function Dashboard() {
 
     if(!connectedUser ) navigate("/auth")
     if(connectedUser && !socket?.connected) {
-      socket = io('http://192.168.167.43:5000');
+      socket = io('http://192.168.1.229:5000');
       socket.on("connect",()=>{
         console.log("Connected")
         socket.emit("NEW_USER_CONNECTED","ARENA_GYM_ADMIN")
