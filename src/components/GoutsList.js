@@ -8,6 +8,7 @@ import Cassis from "../1.png";
 import FruitDelapassion from "../123.png";
 import FiguedeBarbarie from "../1234.png";
 import CitronVert from "../12345.png";
+import Eau from "../1234567.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loadDrinks } from "../controllers/drink";
 export default function GoutsList() {
@@ -50,6 +51,9 @@ export default function GoutsList() {
               break;
               case 5:
               image = FruitDelapassion
+              break;
+              case 6:
+              image = Eau
               break;
               default:
               image = Cassis

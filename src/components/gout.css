@@ -22,7 +22,7 @@
 }
 .Pasteque{
     position: absolute;
-    left: 27%;
+    left: 5%;
     top:75%;
     width:50%;
     height:10%;
@@ -31,6 +31,14 @@
     position: absolute;
     left: 49%;
     top:25%;
+    width:50%;
+    height:10%
+}
+
+.Eau{
+    position: absolute;
+    left: 49%;
+    top:75%;
     width:50%;
     height:10%
 }
