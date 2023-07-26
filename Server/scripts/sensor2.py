@@ -57,4 +57,9 @@ class Device():
             device.ungrab()
             print('Quitting.')
 
-Device.run()
+
+while True:
+    try:
+        Device.run()
+    except:
+        Device.run()
