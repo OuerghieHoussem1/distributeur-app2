@@ -19,9 +19,9 @@ export default function IntesityLevel() {
 
   //Concentration Config
   const DURATION_EAU_CONST = 14000;
-  const durationLevel1 = 300;
-  const durationLevel2 = 400;
-  const durationLevel3 = 500;
+  const durationLevel1 = 200;
+  const durationLevel2 = 300;
+  const durationLevel3 = 400;
 
 
   function hundlSelect(selectedImage) {
