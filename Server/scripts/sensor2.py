@@ -54,9 +54,7 @@ class Device():
 
         except:
             # catch all exceptions to be able release the device
-            """ device.ungrab()
-            print('Quitting.') """
-            pass
-
+            device.ungrab()
+            print('Quitting.')
 
 Device.run()
