@@ -57,11 +57,5 @@ class Device():
             device.ungrab()
             print('Quitting.')
 
-is_running = False
-while True:
-    try:
-        if not is_running:
-            Device.run()
-            is_running = True
-    except:
-        is_running = False
+
+Device.run()
