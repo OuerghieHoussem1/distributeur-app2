@@ -52,8 +52,9 @@ class Device():
                         else:
                             container.append(digit)
 
-        except:
+        except e:
             # catch all exceptions to be able release the device
+            print(e)
             device.ungrab()
             print('Quitting.')
 
