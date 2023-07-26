@@ -233,7 +233,7 @@ app.set("connectedDevices",sockets)
 
 
 const PORT = 5000
-const CONNECTION_URL = "mongodb+srv://houssemouerghie:testtest@cluster0.cmk7sds.mongodb.net/app-manar"
+const CONNECTION_URL = "mongodb+srv://houssemouerghie:testtest@cluster0.cmk7sds.mongodb.net/app"
 mongoose.connect(CONNECTION_URL).then(()=>{
     console.log("Connected to database")
     server.listen(PORT,()=>{
