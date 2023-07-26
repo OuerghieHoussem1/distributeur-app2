@@ -52,7 +52,7 @@ class Device():
                         else:
                             container.append(digit)
 
-        except e:
+        except Exception as e:
             # catch all exceptions to be able release the device
             print(e)
             device.ungrab()
