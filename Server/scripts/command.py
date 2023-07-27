@@ -37,7 +37,7 @@ GPIO.output(PIN_SAVEUR_2, GPIO.HIGH)
 GPIO.output(PIN_SAVEUR_3, GPIO.HIGH)
 GPIO.output(PIN_SAVEUR_4, GPIO.HIGH)
 GPIO.output(PIN_SAVEUR_5, GPIO.HIGH)
-GPIO.output(PIN_EAU , GPIO.LOW)
+GPIO.output(PIN_EAU , GPIO.HIGH)
 
 ############################################################################################
 # Server Flask
@@ -59,7 +59,7 @@ def command_saveur(saveur, timems, timemseau):
         print("zgez")
         GPIO.output(PIN_SAVEUR_5, GPIO.LOW)
     if saveur == 6:
-        GPIO.output(PIN_EAU, GPIO.HIGH)
+        GPIO.output(PIN_EAU, GPIO.LOW)
 
     seconds= (timems/1000)%60
     time.sleep(seconds)
@@ -75,7 +75,7 @@ def command_saveur(saveur, timems, timemseau):
     if saveur == 5:
         GPIO.output(PIN_SAVEUR_5, GPIO.HIGH)
     if saveur == 6:
-        GPIO.output(PIN_EAU, GPIO.LOW)
+        GPIO.output(PIN_EAU, GPIO.HIGH)
 
     GPIO.output(PIN_EAU, GPIO.HIGH)
     seconds= (timemseau/1000)%60
@@ -91,7 +91,7 @@ def stopProgram():
     GPIO.output(PIN_SAVEUR_3, GPIO.HIGH)
     GPIO.output(PIN_SAVEUR_4, GPIO.HIGH)
     GPIO.output(PIN_SAVEUR_5, GPIO.HIGH)
-    GPIO.output(PIN_EAU, GPIO.LOW)
+    GPIO.output(PIN_EAU, GPIO.HIGH)
 
 if __name__ == "__main__":
     try:
