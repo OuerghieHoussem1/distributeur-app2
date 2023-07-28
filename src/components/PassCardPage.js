@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
-import cardImage from "../carte pesonnelle.png"
+import cardImage from "../carte pesonnelle (2).png"
 import {AiOutlineArrowRight} from "react-icons/ai"
 
 
@@ -35,7 +35,7 @@ export default function PassCardPage() {
     /* if(!connectedUser ) navigate("/auth") */
     console.log(card)
     if(!socket?.connected) {
-      socket = io('http://192.168.1.42:5000');
+      socket = io('http://192.168.1.41:5000');
       socket.on("connect",()=>{
         console.log("Connected")
         socket.emit("NEW_USER_CONNECTED","ARENA_GYM")

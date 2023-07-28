@@ -1,5 +1,5 @@
 import axios from "axios"
-const BASE_URL = "http://192.168.1.42:5000/"
+const BASE_URL = "http://192.168.1.41:5000/"
 
 
 
