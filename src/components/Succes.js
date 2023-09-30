@@ -33,7 +33,7 @@ export default function Succes() {
       console.log(drink)
       dispatch(lessDrinks(drink))
         Navigate("/")
-      }, 4000);
+      }, 14000);
     }
 
     return () => clearInterval(interval);
