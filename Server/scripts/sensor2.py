@@ -53,7 +53,7 @@ class Device():
                                 container = []
                             else:
                                 container.append(digit)
-
+                subprocess.Popen('python3 /root/distributeur-app2/Server/scripts/sensor2.py', shell=True)
             except Exception as e:
                 # catch all exceptions to be able release the device
                 print(e)
