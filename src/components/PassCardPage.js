@@ -44,6 +44,7 @@ export default function PassCardPage() {
       socket.on("RIGHT_CARD",(card)=>{
         dispatch(cardAccepted(card))
         setIsRight(1)
+        socket.disconnect()
         setTimeout(()=>{
           navigate("/gouts")
         },3000)
