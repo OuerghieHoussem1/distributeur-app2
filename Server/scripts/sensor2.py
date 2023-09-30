@@ -30,6 +30,7 @@ class Device():
     @classmethod
     def run(cls):
         try:
+            cls.list(show_all=True)
             device = cls.connect()
             container = []
             try:
