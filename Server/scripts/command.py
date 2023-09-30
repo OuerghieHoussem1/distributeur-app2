@@ -69,9 +69,9 @@ def command_saveur(saveur, timems, timemseau):
     if saveur == 2:
         GPIO.output(PIN_SAVEUR_2, GPIO.HIGH)
     if saveur == 3:
-        GPIO.output(PIN_SAVEUR_3, GPIO.HIGH)
-    if saveur == 4:
         GPIO.output(PIN_SAVEUR_4, GPIO.HIGH)
+    if saveur == 4:
+        GPIO.output(PIN_SAVEUR_3, GPIO.HIGH)
     if saveur == 5:
         GPIO.output(PIN_SAVEUR_5, GPIO.HIGH)
     if saveur == 6:
