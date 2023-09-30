@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
-import cardImage from "../carte pesonnelle (2).png"
+import cardImage from "../carte pesonnelle.png"
 import {AiOutlineArrowRight} from "react-icons/ai"
 
 
@@ -44,6 +44,7 @@ export default function PassCardPage() {
       socket.on("RIGHT_CARD",(card)=>{
         dispatch(cardAccepted(card))
         setIsRight(1)
+        socket.disconnect()
         setTimeout(()=>{
           navigate("/gouts")
         },3000)
@@ -53,6 +54,7 @@ export default function PassCardPage() {
         dispatch(cardAccepted(card))
         /* navigate("/gouts") */
         setIsRight(2)
+        socket.disconnect()
         setTimeout(()=>{
           setIsRight(0)
         },5000)
@@ -61,10 +63,11 @@ export default function PassCardPage() {
 
       socket.on("ERROR",error=>{
         console.log(error)
+        socket.disconnect()
         dispatch(showError(error))
       })
     }
-  }, [connectedUser]);
+  }, []);
 
 
   return (    
@@ -74,19 +77,16 @@ export default function PassCardPage() {
             isRight==0?<>
             <h1 className=" text-white text-5xl font-bold font-sans ">SCANNER VOTRE<br/> CARTE</h1>
             <div className='flex flex-col gap-4 mt-60'>
-              <img src={cardImage} alt='' className=' rounded-2xl aspect-video w-96 border-[3px] animate-bounce '/>
               <AiOutlineArrowRight size={250} color='white' className='w-full'/>
             </div>
           </>:isRight==1?<>
             <h1 className=" text-white text-5xl font-bold font-sans high uppercase ">BONJOUR,<br/>{card?.cardName}</h1>
             <div className='flex flex-col gap-4 mt-60'>
-              <img src={cardImage} alt='' className=' rounded-2xl aspect-video w-96 border-[3px] animate-bounce '/>
               <AiOutlineArrowRight size={250} color='white' className='w-full'/>
             </div>
           </>:<>
             <h1 className=" text-white text-5xl font-bold font-sans ">Sorry<br/>Accés erroné ❌<br/>Veuillez vous référer a l'accueil</h1>
             <div className='flex flex-col gap-4 mt-60'>
-              <img src={cardImage} alt='' className=' rounded-2xl aspect-video w-96 border-[3px] animate-bounce '/>
               <AiOutlineArrowRight size={250} color='white' className='w-full'/>
             </div>
           </>}
