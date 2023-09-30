@@ -33,6 +33,7 @@ export default function PassCardPage() {
   useEffect(() => {
 
     /* if(!connectedUser ) navigate("/auth") */
+    socket = io('http://192.168.12.2:5000');
     console.log(card)
     if(!socket?.connected) {
       socket = io('http://192.168.12.2:5000');
@@ -65,7 +66,7 @@ export default function PassCardPage() {
         dispatch(showError(error))
       })
     }
-  }, [connectedUser]);
+  }, [isRight]);
 
 
   return (    
