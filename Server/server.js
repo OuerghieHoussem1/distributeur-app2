@@ -221,9 +221,10 @@ app.post("/checkCard",async (req, res)=>{
     console.log("GOOD")
 
     users["ARENA_GYM"].emit("RIGHT_CARD",card)
-    res.json({})
+    return res.json({})
     }catch{
         console.log("WRONG PAGE")
+        return res.json({})
     }
 })
 
