@@ -60,6 +60,7 @@ class Device():
                 device.ungrab()
                 print('Quitting.')
         except :
-            subprocess.Popen('python3 /root/distributeur-app2/Server/scripts/sensor2.py', shell=True)
+            #subprocess.Popen('python3 /root/distributeur-app2/Server/scripts/sensor2.py', shell=True)
+            pass
 
 Device.run()
